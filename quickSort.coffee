@@ -10,21 +10,18 @@ quickSort = (bottom,top,random) ->
   return if bottom >= top
   temp = null
   div = random[bottom] #先頭を適当な値に
-  
   lower = bottom
   upper = top
-
+  
   while lower < upper
-    console.log "#{lower} \t #{div}"
     while lower <= upper && random[lower] <= div
       lower++
-    console.log "#{upper} \t #{div}"
     while lower <= upper && random[upper] > div
       upper--
-
+    
     if lower < upper
-      temp = random[bottom]
-      random[bottom] = random[upper]
+      temp = random[lower]
+      random[lower] = random[upper]
       random[upper] = temp
   
   temp = random[bottom]
@@ -37,4 +34,4 @@ quickSort = (bottom,top,random) ->
   random
 
 sort = randFunc()
-console.log quickSort 0,sort.length,sort
+console.log quickSort(0,sort.length-1,sort)
